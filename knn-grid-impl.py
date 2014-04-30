@@ -24,12 +24,16 @@ class Vertex:
     def __repr__(self):
         return self.__str__()
     
-    # check equal
     def __eq__(self, other):
+        """
+        Check equality
+        """
         return self.id == other.id
     
-    # use this class as a dictionary key
     def __hash__(self):
+        """
+        Use this class as a dictionary key
+        """
         return hash(self.__str__())
     
 class Edge:
@@ -102,7 +106,8 @@ class GridIndex:
         spanX = maxX - minX + 1
         spanY = maxY - minY + 1
     
-        return [(minY+j)*self.numColumns + (minX+i) for j in range(spanY) for i in range(spanX)]
+        return [(minY+j)*self.numColumns + (minX+i) for j in 
+                range(spanY) for i in range(spanX)]
 
 class GridIndexForEdges(GridIndex):
     
@@ -176,12 +181,11 @@ def euclideanDistance(n1, n2):
     """Calculate the euclidean distance.
 
     :Parameters:
-       t : 1d or 2d array_like object ([M,] P)
-          test data
+       n1 : a node
+       n2 : a node
 
     :Returns:
-       p : float or 1d numpy array
-          predicted response
+       the euclidean distance
     """
     return math.sqrt( \
            math.pow(n1.x - n2.x,2) \
@@ -303,6 +307,7 @@ def main():
     print "### top 5 closest nodes ###"
     for node in nodesGridIndex.knn(Vertex(pX,pY)):
         print node
+    
     print "### top 5 closest edges ###"    
     for edge in edgesGridIndex.knn(Vertex(pX,pY)):
         print edge
@@ -313,16 +318,16 @@ if __name__ == "__main__":
 # #####################################################################
 # Copyright 2014, Hengfeng Li.
 # 
-# ExtractGraph.jar is free software: you can redistribute it and/or modify
+# This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 # 
-# ExtractGraph.jar is distributed in the hope that it will be useful,
+# This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 # 
 # You should have received a copy of the GNU General Public License
-# along with ExtractGraph.jar.  If not, see http://www.gnu.org/licenses.
+# along with this program.  If not, see http://www.gnu.org/licenses.
 # #####################################################################
