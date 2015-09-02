@@ -131,7 +131,7 @@ class GridIndexForEdges(GridIndex):
                 closeEdges.append(edge)
         
         # remove duplicates
-        list(set(closeEdges))
+        closeEdges = list(set(closeEdges))
         
         newCloseEdges = []
         for edge in closeEdges:
